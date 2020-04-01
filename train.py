@@ -95,10 +95,10 @@ def train(model, optim, model_saver, num_epochs, train_loader, val_loader, steps
                           % (epoch, optim.training_step, math.exp(min(val_loss / val_num_nonzeros, 100)),
                              100 * (val_num_corrects / val_num_nonzeros)))
 
-                # if len(val_losses) > 1 and val_losses[-1] > val_losses[-2] and learning_rate > args.learning_rate_min:
-                #     learning_rate = learning_rate * lr_decay
-                #     optim.optimizer.param_groups[0]['lr'] = max(learning_rate, args.learning_rate_min)
-                #     print_log('Decay lr, current lr: %f' % learning_rate)
+                if len(val_losses) > 1 and val_losses[-1] > val_losses[-2] and learning_rate > args.learning_rate_min:
+                    learning_rate = learning_rate * lr_decay
+                    optim.optimizer.param_groups[0]['lr'] = max(learning_rate, args.learning_rate_min)
+                    print_log('Decay lr, current lr: %f' % learning_rate)
 
                 model.train()
 

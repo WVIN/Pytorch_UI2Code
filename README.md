@@ -85,7 +85,7 @@ The test perplexity can be obtained after testing is finished. In order to evalu
 
 ```
 cd evaluate
-python evaluate/checkExeperiment.py
+python checkExeperiment.py
 ```
 Note that if you change the directory of the results data, please change it accordingly in the file.
 

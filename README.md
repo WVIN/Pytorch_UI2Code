@@ -25,6 +25,7 @@ The automated GUI testing tool for android apps, named [Stoat](https://tingsu.gi
 - PyTorch 1.4
 - CUDA9.2 or higher
 - opencv
+- tqdm
 - perl
 
 
@@ -49,12 +50,12 @@ The raw image data is in `processedImage`, and all code data in `XMLsequence.txt
 All parameters you can adjust in utils/args.py. You can train the model with the following code:
 ```
 python train.py \
---data_base_dir dataSet/processedImage \
---data_path dataSet/train.lst \
---val_data_path dataSet/validate.lst \
---label_path dataSet/XMLsequence.lst \
---vocab_file dataSet/xml_vocab.txt \
---batch_size 20 \
+--data_base_dir dataset/processedImage \
+--data_path dataset/train.lst \
+--val_data_path dataset/validate.lst \
+--label_path dataset/XMLsequence.lst \
+--vocab_file dataset/xml_vocab.txt \
+--batch_size 60 \
 --beam_size 5 \
 --dropout 0.2 \
 --num_epochs 10
@@ -69,15 +70,17 @@ Now you can load the model and test on test set.
 You can use the following code to test it:
 
 ```
-python translate.py \ 
+python translate.py \
 --model_path checkpoints/UIModel__step_80000.pth \
 --log_path log_test.txt \
---data_base_dir H:\DataSet\Ui2code/processedImage/ \
---data_path H:\DataSet\Ui2code/test_shuffle.lst \
---label_path H:\DataSet\Ui2code/XMLsequence.lst \
+--translate_log translate_log.txt \
+--data_base_dir dataset/processedImage/ \
+--data_path dataset/validate.lst \
+--label_path dataset/XMLsequence.lst \
+--vocab_file dataset/xml_vocab.txt \
 --output_dir results \
 --max_num_tokens 100 \
---batch_size 30 -beam_size 5
+--batch_size 60 --beam_size 5
 ```
 
 ## Evaluate

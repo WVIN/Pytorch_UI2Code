@@ -1,4 +1,5 @@
 import torch
+import os
 
 
 class ModelSaver:
@@ -12,6 +13,8 @@ class ModelSaver:
             'model': self.model.state_dict(),
             'optim': self.optim.state_dict()
         }
+        if not os.path.exists(self.base_path):
+            os.mkdir(self.base_path)
         prefix = self.base_path + self.model.model_name + '_'
         ck_path = prefix + '_step_%d.pth' % step
         torch.save(checkpoint, ck_path)

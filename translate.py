@@ -238,6 +238,7 @@ def tile(x, count, dim=0):
 
 def main():
     args = parse_args()
+    print(args.translate_log)
     logging = get_root_logger(args.translate_log, mode='w')
     out_file = None
     if args.output_dir is not None:

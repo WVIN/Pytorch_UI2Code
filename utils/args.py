@@ -22,12 +22,12 @@ def parse_args():
                         help='The path to put visualization results if visualize is set to True')
 
     '''Display'''
-    parser.add_argument('--steps_per_checkpoint', type=int, default=5000,
+    parser.add_argument('--steps_per_checkpoint', type=int, default=2000,
                         help='Checkpointing (print perplexity, save model) per how many steps')
     parser.add_argument('--beam_size', type=int, default=2, help='Beam size.')
 
     '''argsimization'''
-    parser.add_argument('--valid_steps', type=int, default=5000, help='Performing validation every X steps')
+    parser.add_argument('--valid_steps', type=int, default=6000, help='Performing validation every X steps')
     parser.add_argument('--num_epochs', type=int, default=10, help='The number of whole data passes')
     parser.add_argument('--batch_size', type=int, default=20, help='Batch size')
     parser.add_argument('--learning_rate', type=float, default=0.1, help='Initial learning rate')
@@ -45,7 +45,7 @@ def parse_args():
     parser.add_argument('--encoder_num_layers', type=int, default=1,
                         help='Number of hidden layers in encoder cell')  # does not support >1 now!!!
     parser.add_argument('--decoder_num_layers', type=int, default=1, help='Number of hidden units in decoder cell')
-    parser.add_argument('--vocab_file', type=str, default='H:/DataSet/Ui2code/xml_vocab.txt', help='Vocabulary file. A token per line.')
+    parser.add_argument('--vocab_file', type=str, default='dataset/xml_vocab.txt', help='Vocabulary file. A token per line.')
     parser.add_argument('--image_channel_size', type=int, default=1, choices=[3, 1],
                         help="Using grayscale image can training "
                         "model faster and smaller")

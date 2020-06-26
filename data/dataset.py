@@ -55,7 +55,7 @@ class UIDataset(data.Dataset):
         if self.transforms:
             img = self.transforms(img)
         target_eval = torch.tensor(numlist)[1:]
-        return img, target, target_eval, img_path.split('\\')[1]  # 返回图片对应的tensor及其标签
+        return img, target, target_eval, img_path.split('\\')[-1]  # 返回图片对应的tensor及其标签
 
     '''样本的数量'''
     def __len__(self):
